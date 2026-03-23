@@ -1,6 +1,6 @@
 # EDA-AutoSync
 
-Steps:
+Implementation Steps:
 
 1. In SyncProjects.yml, change "project:" names in the conditional statements to the names of your Github Repos. Add additional conditional statements if more projects are present
 2. In SyncProjects.yml, change "repository_name" variables to the name of your projects inside of AAP
