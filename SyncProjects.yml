@@ -1,0 +1,28 @@
+---
+- name: Run Project Sync
+  hosts: localhost
+  gather_facts: false
+  vars:
+    repository_name: "{{ ansible_eda.event.repo_name }}"
+  
+  tasks: 
+  
+    - name: Sync Project1 Repo Project
+      ansible.controller.project_update:
+        project: "GitHub - Project1"
+      when: repository_name == "AAP-Project1"
+
+    - name: Sync Project2 Repo Project
+      ansible.controller.project_update:
+        project: "GitHub - Project2"
+      when: repository_name == "AAP-Project2"
+
+    - name: Sync Project3 Repo Project
+      ansible.controller.project_update:
+        project: "GitHub - Project3"
+      when: repository_name == "AAP-Project3"
+
+    - name: Sync Project4 Repo Project
+      ansible.controller.project_update:
+        project: "GitHub - Project4"
+      when: repository_name == "AAP-Project4"
