@@ -1,0 +1,31 @@
+---
+- name: Sync projects
+  hosts: all
+  sources:
+    - ansible.eda.webhook:
+        host: 0.0.0.0
+        port: 5001
+      filters:
+        - ansible.eda.dashes_to_underscores: null
+        
+  rules:
+    - name: Get push event details
+      condition: event.meta.headers.X_GitHub_Event == "push"
+      action: 
+        post_event:
+          event:
+            type: "{{ event.meta.headers.X_GitHub_Event }}"
+            gitref: "{{ event.payload.ref }}"
+            repo_name: "{{ event.payload.repository.name }}"
+            author: "{{ event.payload.head_commit.author.name }}"
+            clone_url: "{{ event.payload.repository.clone_url }}"
+      
+    - name: Respond to push event
+      condition: event.type == "push"
+      action:
+        run_job_template:
+          name: "EDA - Sync Project on Commit"
+          organization: Solution Architects
+          job_args:
+            exta_vars:
+              event: "{{ event }}"
