@@ -7,7 +7,7 @@ Steps:
 3. Create a EDA credential of type "Github Event Stream" and place your HMAC token from Github in the credential
 4. Create an Event stream in EDA with the "Github Event Stream" type and place your credential created in step 3 in the "credential" field
 5. In your Github Repos, create webhooks, and set the Payload URL to the event stream URL given by your newly created event stream
-6. Create a rulebook activation in EDA and link it to Sync_Webhook_Injest.yml
+6. Create a rulebook activation in EDA and link it to Sync_Webhook_Ingest.yml
 7. Create a template in Automation controller and link it to SyncPropjects.yml
 8. Test your new automation by making a change to your Github Repo
 
